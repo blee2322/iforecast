@@ -23,5 +23,6 @@ Open your cloned repositoy in a text editor to review the HTLM, CSS and JS.
 * [google maps](https://developers.google.com/maps/documentation/javascript/
 ) - Map API used.
 * [Bootstrap](http://getbootstrap.com/docs/4.0/getting-started/introduction/) - css framework used.
+* [firebase](https://firebase.google.com/docs/) - database used.
 
 
