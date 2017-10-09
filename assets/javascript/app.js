@@ -1,3 +1,5 @@
+// test
+
 
 // Google analytics
 window.dataLayer = window.dataLayer || [];
@@ -14,6 +16,7 @@ var config = {
  storageBucket: "iforecast-c0d80.appspot.com",
  messagingSenderId: "940595726063"
 };
+
 
 firebase.initializeApp(config);
 var database = firebase.database();
@@ -184,10 +187,44 @@ function getCityDetails(fqcn) {
   }
 }
 
+function getWeather (coordinates) {
+  var queryPeram = coordinates;
+  var apiKey = "5be11e7282a5413f9ae194901170510";
+  var baseURL =  "https://api.apixu.com/v1/current.json?";
+  var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
+   console.log(queryURL);
+  // $.ajax({
+
+  // })
+
+
+
+};
+
 $(document).ready(function(){
   // show the hometown form if and only if they don't
   // have the 'hide_hometown_form' field in local storage set
   if(localStorage.getItem('hide_hometown_form') === null){
     $('#hometown-form').removeClass('hide');
   }
+  $("#weather").on("click",function(){
+    var btnLong = $(this).attr("data-long");
+    var btnlad = $(this).attr("data-lad");
+    console.log(btnLong + " " + btnlad);
+    var weatherCoordinates = (btnlad + "," + btnLong).toString();
+    console.log(weatherCoordinates);
+    getWeather(weatherCoordinates);
+  
+  })
+
+
 });
+
+
+
+
+
+
+
+
+
