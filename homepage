@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>i4Cast</title>
+  <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/flick/jquery-ui.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+
+</head>
+<body>
+<div class="content-container">
+  <div id="map">
+  <!-- INPUT MAP HERE -->
+  </div>
+  <div id="main">
+    <div class="row">
+      <!-- <div class="col-md-10">
+        <h1>iForecast</h1>
+        <h4>look up the weather in your hometown and view others that have visted the vite</h4>
+      </div> -->
+      <div class="col-md-2">
+        <div class="content-container">
+          <div class="viewers-container">
+          <img src="assets/images/viewing.png">
+            <span id="connected-viewers"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form id="hometown-form" class="hide" method="post" enctype="multipart/form-data" onsubmit="return false;"> 
+          <div class="form-group">
+            <input name="ff_nm_from[]" type="text" class="form-control ff_elem" id="hometown" placeholder="hometown (city, state, country)" required value="">
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="stats-container"></div>
+</div>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107619861-1"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script async defer 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAkNHDnrQY-JqtW1a2kK9ngWrGh3HPjYU"></script>
+<script src="assets/javascript/app.js"></script>
+
+</body>
+</html>
