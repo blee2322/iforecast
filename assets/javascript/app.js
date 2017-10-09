@@ -109,8 +109,29 @@ function renderMap(gmapsHometowns){
 
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
-        infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3]);
-        infowindow.open(map, marker);
+        //console.log(gmapsHometowns[i][1] + "," + gmapsHometowns[i][2]);
+        var weatherCoordinates = (gmapsHometowns[i][1] + "," + gmapsHometowns[i][2]).toString();
+    
+        var queryPeram = weatherCoordinates;
+        var apiKey = "5be11e7282a5413f9ae194901170510";
+        var baseURL =  "https://api.apixu.com/v1/current.json?";
+        var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
+        console.log(queryURL);
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function (data) {
+          // console.log(data);
+          var localTime = data.location.localtime;
+          var weatherCondition = data.current.condition.text;
+          var currentTemp = data.current.temp_f;
+          var currentWind = data.current.wind_mph;
+
+          var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
+
+          infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3] + 'Forecast: ' + weatherData);
+          infowindow.open(map, marker);
+        })
       }
     })(marker, i));
   }
@@ -187,7 +208,8 @@ function getCityDetails(fqcn) {
   }
 }
 
-function getWeather (coordinates) {
+function getWeather(coordinates) {
+  console.log(coordinates);
   var queryPeram = coordinates;
   var apiKey = "5be11e7282a5413f9ae194901170510";
   var baseURL =  "https://api.apixu.com/v1/current.json?";
@@ -197,9 +219,17 @@ function getWeather (coordinates) {
    url: queryURL,
    method: "GET"
   }).done(function (data) {
-    console.log(data);
-  })
+    // console.log(data);
+  
+    var localTime = data.location.localtime;
+    var weatherCondition = data.current.condition.text;
+    var currentTemp = data.current.temp_f;
+    var currentWind = data.current.wind_mph;
 
+    var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
+    return weatherData
+  })
+  return 
 };
 
 $(document).ready(function(){
@@ -208,15 +238,6 @@ $(document).ready(function(){
   if(localStorage.getItem('hide_hometown_form') === null){
     $('#hometown-form').removeClass('hide');
   }
-  $("#weather").on("click",function(){
-    var btnLong = $(this).attr("data-long");
-    var btnlad = $(this).attr("data-lad");
-    console.log(btnLong + " " + btnlad);
-    var weatherCoordinates = (btnlad + "," + btnLong).toString();
-    console.log(weatherCoordinates);
-    getWeather(weatherCoordinates);
-  
-  })
 
 
 });
