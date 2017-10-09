@@ -181,7 +181,7 @@ function getCityDetails(fqcn) {
   if (cityfqcn) {
     
      return $.getJSON(
-        "http/://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
+        "http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
            
       );
   }
@@ -193,11 +193,12 @@ function getWeather (coordinates) {
   var baseURL =  "https://api.apixu.com/v1/current.json?";
   var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
    console.log(queryURL);
-  // $.ajax({
-
-  // })
-
-
+  $.ajax({
+   url: queryURL,
+   method: "GET"
+  }).done(function (data) {
+    console.log(data);
+  })
 
 };
 
