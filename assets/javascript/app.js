@@ -109,6 +109,9 @@ function renderMap(gmapsHometowns){
 
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
+        map.setZoom(8);
+        map.panTo(marker.position);
+        map.setCenter(marker);
         //console.log(gmapsHometowns[i][1] + "," + gmapsHometowns[i][2]);
         var weatherCoordinates = (gmapsHometowns[i][1] + "," + gmapsHometowns[i][2]).toString();
     
