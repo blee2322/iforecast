@@ -1,0 +1,33 @@
+
+    
+    /*html, body {
+        height: 100%;
+        font-size: 18px;
+
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }*/
+
+    .content-container {
+      height: 100%;
+    }
+
+     #map {
+      height: 70%;
+      width: 100%;
+    }
+      /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .viewers-container {
+      color: #000;
+    }
+    .viewers-container img {
+      width: 30px;
+    }
+
