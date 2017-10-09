@@ -22,6 +22,7 @@ Open your cloned repositoy in a text editor to review the HTLM, CSS and JS.
 * [apixu](https://www.apixu.com/api.aspx) - Weather API used.
 * [google maps](https://developers.google.com/maps/documentation/javascript/
 ) - Map API used.
+* [Geobytes](http://geobytes.com/free-ajax-cities-jsonp-api/) - AJAX AUTOCOMPLETE LIST CITIES JSON-P API used.
 * [Bootstrap](http://getbootstrap.com/docs/4.0/getting-started/introduction/) - css framework used.
 * [firebase](https://firebase.google.com/docs/) - database used.
 
