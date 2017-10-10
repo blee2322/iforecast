@@ -1,14 +1,15 @@
 
     
-    /*html, body {
+    html, body {
         height: 100%;
         font-size: 18px;
 
     }
     body {
-      display: flex;
-      flex-direction: column;
-    }*/
+     overflow-x: hidden;
+     background-color: #928f88;s
+     /*#96817c;*/
+    }
 
     .content-container {
       height: 100%;
@@ -30,4 +31,42 @@
     .viewers-container img {
       width: 30px;
     }
+  #header {
+      /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
+      
+      /*https://i.pinimg.com/564x/86/ef/f2/86eff22912f56ff967393d608bdc6a16.jpg*/
+      /*https://i.pinimg.com/564x/09/ac/d4/09acd4dabd1d6f99c257f2dea28f71a5.jpg*/
+      background: url(../images/bkg.jpg) center center no-repeat;
+    background-size: cover;
+    height: 2000px;
+    text-align: center;
+    color: #fff;
+    padding-top: 5%;
+    }
 
+    h1, h3 {
+      font-weight: 300;
+    }
+    h3 {
+      margin-top: 10px;
+    }
+
+    #main {
+      min-height: 200px;
+    }
+    #hometown-form {
+      margin: 3% 20%;
+    }
+
+    #downArrow {
+      height: 60px;
+    }
+    .form-control {
+      background-color: transparent;
+      border:1px solid #fff;
+    }
+    .form-control:focus {
+      border:1px solid #fff;
+      box-shadow: none;
+      outline: none;
+    }
