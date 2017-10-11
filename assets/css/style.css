@@ -83,7 +83,7 @@ font-family: 'Amatic SC', cursive; -
 
     #main {
       min-height: 200px;
-      margin-bottom: 10%;
+      margin-bottom: 12%;
     }
     #hometown-form {
       margin: 0 20%;
@@ -169,12 +169,15 @@ font-family: 'Amatic SC', cursive; -
       .hide {
         display: none;
       }
-      iframe {
-        width: 75%;
+      #stats-container {
+        margin-bottom: 5%;
+      }
+      /*iframe {
+        width: 50%;
         height: auto;
-        min-height: 440px;
+        min-height: 397px;
         overflow: hidden;
-        }
+        }*/
     @media only screen and (max-width: 40em) {
        #header {
             /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
@@ -193,4 +196,10 @@ font-family: 'Amatic SC', cursive; -
       margin-top: 10px;
       font-size: 1em;
     }
+    iframe {
+        width: 100%;
+        height: auto;
+        min-height: 397px;
+        overflow: hidden;
+        }
    }

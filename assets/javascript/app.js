@@ -248,7 +248,7 @@ $(function (){
    $("#hometown").autocomplete({
     source: function (request, response) {
      $.getJSON(
-      "http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
+      "https://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
       function (data) {
         response(data)
       }
@@ -309,7 +309,7 @@ function getCityDetails(fqcn) {
   if (cityfqcn) {
     
      return $.getJSON(
-        "http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
+        "https://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
            
       );
   }
