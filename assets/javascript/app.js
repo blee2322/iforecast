@@ -140,7 +140,7 @@ function renderMap(gmapsHometowns, zoomOut){
           url: queryURL,
           method: "GET"
         }).done(function (data) {
-          // console.log(data);
+          console.log(data);
           var localTime = data.location.localtime;
           var weatherCondition = data.current.condition.text;
           var weatherIcon;
@@ -154,7 +154,8 @@ function renderMap(gmapsHometowns, zoomOut){
           var weatherIcon;
           var nf = Intl.NumberFormat();
           nf.format(gmapsHometowns[i][3])
-          if(weatherCondition === "Sunny"){
+
+          if(weatherCondition === "Sunny" || weatherCondition === "Clear"){
             weatherIcon = "<img class='images' src='assets/images/sun.png'>"
           }
           else if (weatherCondition === "Partly cloudy"){
@@ -180,6 +181,14 @@ function renderMap(gmapsHometowns, zoomOut){
           else if(weatherCondition === "Thundery outbreaks possible") {
             weatherIcon = "<img class='images' src='assets/images/storm.png'>"
           }
+          else if(weatherCondition === "Light freezing rain" || "Moderate or heavy freezing rain" || weatherCondition === "Freezing drizzle" || weatherCondition === "Heavy freezing drizzle" || weatherCondition === "Light sleet" || weatherCondition === "Moderate or heavy sleet" || weatherCondition === "Patchy light snow" || weatherCondition === "Light snow" || weatherCondition === "Patchy moderate snow" || weatherCondition === "Moderate snow" || weatherCondition === "Patchy heavy snow" || weatherCondition === "Heavy snow" || weatherCondition === "Ice pellets" || weatherCondition === "Light sleet showers" || weatherCondition === "Moderate or heavy sleet showers" || weatherCondition === "Light snow showers" || weatherCondition === "Moderate or heavy snow showers" || weatherCondition === "Light showers of ice pellets" || weatherCondition === "Moderate or heavy showers of ice pellets" || weatherCondition === "Freezing fog" || weatherCondition === "Patchy snow possible" || weatherCondition === "Patchy sleet possible" || weatherCondition === "Patchy freezing drizzle possible" || weatherCondition === "Blowing snow" || weatherCondition === "Blizzard"){
+            weatherIcon = "<img class='images' src='assets/images/snow.png'>"
+          }
+          /*
+          
+
+
+          */
           //var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
 
        
@@ -206,7 +215,6 @@ function renderMap(gmapsHometowns, zoomOut){
          // infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3] + 'Forecast: ' + weatherData );
           // + " imag src" +  weatherIcon
           // infowindow.open(map, marker);
-
           infoBubble = new InfoBubble({
             map: map,
             maxWidth: 200,
@@ -289,6 +297,7 @@ function handleHometownClick(hometownObj){
   // (not in this function) - handle the hometown stats in the firebase change event.
   hometownsRef.push(hometownObj);
   $('#hometown-form').addClass('hide');
+  $('#hometown-form-message').removeClass('hide');
   localStorage.setItem('hide_hometown_form', true);
 }
 
@@ -333,6 +342,7 @@ function getWeather(coordinates) {
   // show the hometown form if and only if they don't
   // have the 'hide_hometown_form' field in local storage set
   if(localStorage.getItem('hide_hometown_form') === null){
+    $('#hometown-form-message').addClass('hide');
     $('#hometown-form').removeClass('hide');
   }
   var usersHometown = {};

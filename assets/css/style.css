@@ -83,6 +83,7 @@ font-family: 'Amatic SC', cursive; -
 
     #main {
       min-height: 200px;
+      margin-bottom: 10%;
     }
     #hometown-form {
       margin: 0 20%;
@@ -165,6 +166,15 @@ font-family: 'Amatic SC', cursive; -
         border-top: 1px solid #fff;
         text-align: center;
       }
+      .hide {
+        display: none;
+      }
+      iframe {
+        width: 75%;
+        height: auto;
+        min-height: 440px;
+        overflow: hidden;
+        }
     @media only screen and (max-width: 40em) {
        #header {
             /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
