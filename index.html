@@ -1,59 +1,268 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>i4Cast</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
-	<style>
-		html, body {
-  			height: 100%;
-  			font-size: 18px;
-
-		}
-		body {
-			display: flex;
-			flex-direction: column;
-		}
-		.content-container {
-			background: #121212 url("assets/images/coming-soon.gif") no-repeat center;
-			background-size: contain;
-			height: 100%;
-			flex: 1 0 auto;
-			text-align: center;
-		}
-		h1 {
-			color: #FEFEFE;
-			font-weight: 300;
-			margin-top: 10%;
-			font-size: 3em;
-			text-transform: lowercase;
-		}
-		.viewers-container {
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-			color: #fefefe;
-		}
-		.viewers-container img {
-			width: 30px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iForecast</title>
+  <meta name="google-signin-client_id" content="940595726063-uqsr63elb6udmhaqutsibhfm959tec4k.apps.googleusercontent.com">
+  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
+  <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/flick/jquery-ui.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <style >
+    
+  </style>
 </head>
 <body>
 <div class="content-container">
-	<h1>coming soon...</h1>
-	<div class="viewers-container">
-	<img src="assets/images/viewing.png">
-		<span id="connected-viewers"></span>
-	</div>
+<div id="header">
+ <!--  <h1>some catchyweather &amp; hometown <del>BS</del> goes here.</h1> -->
+  <img src="assets/images/icon.png">
+  <h3>iForecast</h3>
+  <h1>Hometown weather m<span><sup>app</sup></span></h1>
+  <p>(click)</p>
+  <img src="assets/images/arrow1.png" id="downArrow">
+</div>
+  <div id="map">
+  <!-- INPUT MAP HERE -->
+  </div> 
+  <div class="row" id="map-control">
+    <div class="col-md-12">
+      <button id="zoomOut">Reset Map View</button>
+    </div>
+  </div>
+  <div id="main">
+    <div class="row">
+      <div class="col-md-10">
+      
+      </div>
+      <div class="col-md-2">
+        <div class="content-container">
+          <div class="viewers-container">
+          <img src="assets/images/viewing1.png">
+            <span id="connected-viewers"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form id="hometown-form" class="hide" method="post" enctype="multipart/form-data" onsubmit="return false;"> 
+          <h3>input your hometown and select the match from the drop down</h3>
+          <div class="form-group">
+            <input name="ff_nm_from[]" type="text" class="form-control ff_elem" id="hometown" placeholder="hometown (city, state, country)" required value="">
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="stats-container">
+    <div id="chart" class="chart-container"></div>
+    <style>
+    </style>
+</div>
+  </div>
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107619861-1"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-<script src="assets/javascript/main.js"></script>
+<script async defer 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAkNHDnrQY-JqtW1a2kK9ngWrGh3HPjYU"></script>
+<script type="text/javascript" src="assets/javascript/map.js"></script>
+<script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/infoBuble.js"></script>
+ <!-- <script src="https://d3js.org/d3.v4.min.js" data-semver="4.0.0" data-require="d3@*"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+<script src="https://apis.google.com/js/client:platform.js"></script>
+<script> 
+/*  Example of what dataset structure should look like:
+var browserDataset = [
+        { name: 'IE', percent: 39.10 },
+        { name: 'Chrome', percent: 32.51 },
+        { name: 'Safari', percent: 13.68 },
+        { name: 'Firefox', percent: 8.71 },
+        { name: 'Others', percent: 6.01 }
+    ];  
+*/
+
+var browserDataset = [
+        { name: 'IE', percent: 39.10 },
+        { name: 'Chrome', percent: 32.51 },
+        { name: 'Safari', percent: 13.68 },
+        { name: 'Firefox', percent: 8.71 },
+        { name: 'Others', percent: 6.01 }
+    ];
+
+
+  var VIEW_ID = '161886915';
+
+function renderGraph(dataset){
+  var pie=d3.layout.pie()
+            .value(function(d){return d.percent})
+            .sort(null)
+            .padAngle(.03);
+
+    var w=300,h=300;
+
+    var outerRadius=w/2;
+    var innerRadius=100;
+
+    var color = d3.scale.category10();
+
+    var arc=d3.svg.arc()
+            .outerRadius(outerRadius)
+            .innerRadius(innerRadius);
+
+    var svg=d3.select("#chart")
+            .append("svg")
+            .attr({
+                width:w,
+                height:h,
+                class:'shadow'
+            }).append('g')
+            .attr({
+                transform:'translate('+w/2+','+h/2+')'
+            });
+    var path=svg.selectAll('path')
+            .data(pie(dataset))
+            .enter()
+            .append('path')
+            .attr({
+                d:arc,
+                fill:function(d,i){
+                    return color(d.data.name);
+                }
+            });
+
+    path.transition()
+            .duration(1000)
+            .attrTween('d', function(d) {
+                var interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
+                return function(t) {
+                    return arc(interpolate(t));
+                };
+            });
+
+
+    var restOfTheData=function(){
+        var text=svg.selectAll('text')
+                .data(pie(dataset))
+                .enter()
+                .append("text")
+                .transition()
+                .duration(200)
+                .attr("transform", function (d) {
+                    return "translate(" + arc.centroid(d) + ")";
+                })
+                .attr("dy", ".4em")
+                .attr("text-anchor", "middle")
+                .text(function(d){
+                    return d.data.percent+"%";
+                })
+                .style({
+                    fill:'#fff',
+                    'font-size':'10px'
+                });
+
+        var legendRectSize=20;
+        var legendSpacing=7;
+        var legendHeight=legendRectSize+legendSpacing;
+
+
+        var legend=svg.selectAll('.legend')
+                .data(color.domain())
+                .enter()
+                .append('g')
+                .attr({
+                    class:'legend',
+                    transform:function(d,i){
+                        //Just a calculation for x & y position
+                        return 'translate(-35,' + ((i*legendHeight)-65) + ')';
+                    }
+                });
+        legend.append('rect')
+                .attr({
+                    width:legendRectSize,
+                    height:legendRectSize,
+                    rx:20,
+                    ry:20
+                })
+                .style({
+                    fill:color,
+                    stroke:color
+                });
+
+        legend.append('text')
+                .attr({
+                    x:30,
+                    y:15
+                })
+                .text(function(d){
+                    return d;
+                }).style({
+                    fill:'#929DAF',
+                    'font-size':'14px'
+                });
+    };
+
+    setTimeout(restOfTheData,1000);
+}
+renderGraph(browserDataset);
+
+// Query the API and print the results to the page.
+  function queryReports() {
+    gapi.client.request({
+      path: '/v4/reports:batchGet',
+      root: 'https://analyticsreporting.googleapis.com/',
+      method: 'POST',
+      body: {
+        reportRequests: [
+          {
+            viewId: VIEW_ID,
+            dateRanges: [
+              {
+                startDate: '7daysAgo',
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:sessions'
+              }
+            ]
+          }
+        ]
+      }
+    }).then(displayResults, console.error.bind(console));
+  }
+
+  function displayResults(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    console.log(formattedJson);
+    // format data into data structure similar to browserDAta here
+    // clear the graph if it already exists
+    // once formatted, pass into renderGraph here to re-render
+  }
+
+$(document).ready(function(){
+
+})
+/*
+on click: 
+- grab the respective dataset from google analytics (e.g. grab gender distribution, or hobby distribution)
+- convert that data into the format similar to browserDataset, where each object has a name and percent property
+- empty the #chart element, in case there's a graph that is already rendered.
+- call renderGraph and pass that dataset into it to render the graph.
+*/
+</script>
+
 </body>
 </html>
