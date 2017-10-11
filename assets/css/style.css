@@ -172,12 +172,7 @@ font-family: 'Amatic SC', cursive; -
       #stats-container {
         margin-bottom: 5%;
       }
-      /*iframe {
-        width: 50%;
-        height: auto;
-        min-height: 397px;
-        overflow: hidden;
-        }*/
+      
     @media only screen and (max-width: 40em) {
        #header {
             /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
