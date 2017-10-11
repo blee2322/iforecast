@@ -1,5 +1,6 @@
-[
-  {
+
+// window.__mapStyles =
+ var mapStyles = [{
     "elementType": "geometry",
     "stylers": [
       {
@@ -251,5 +252,4 @@
         "color": "#17263c"
       }
     ]
-  }
-]
+  }]

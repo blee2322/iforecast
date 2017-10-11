@@ -7,8 +7,10 @@
     }
     body {
      overflow-x: hidden;
-     background-color: #928f88;s
+     background-color: #17263c;
+     /*#928f88;s*/
      /*#96817c;*/
+     font-family: 'Amatic SC', cursive;
     }
 
     .content-container {
@@ -26,29 +28,47 @@
       padding: 0;
     }
     .viewers-container {
-      color: #000;
+      color: #fff;
+    }
+    .viewers-container span {
+      font-family: 'Amatic SC', cursive;
+      font-size: 2em;
     }
     .viewers-container img {
-      width: 30px;
+      width: 50px;
+      margin-right: 10px;
+      margin-top: -20px;
     }
   #header {
       /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
       
       /*https://i.pinimg.com/564x/86/ef/f2/86eff22912f56ff967393d608bdc6a16.jpg*/
       /*https://i.pinimg.com/564x/09/ac/d4/09acd4dabd1d6f99c257f2dea28f71a5.jpg*/
-      background: url(../images/bkg.jpg) center center no-repeat;
+    background: url(../images/bkg.jpg) center center no-repeat;
     background-size: cover;
-    height: 2000px;
+    height: 2200px;
     text-align: center;
     color: #fff;
-    padding-top: 5%;
+    padding-top: 2%;
     }
-
+    #header p {
+      margin-top: 26px;
+      margin-bottom: 0px;
+    }
+/*font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Wire One', sans-serif; -
+font-family: 'Amatic SC', cursive; - 
+*/
     h1, h3 {
       font-weight: 300;
+      font-family: 'Amatic SC', cursive;
+    }
+    h1 {
+      font-size: 4em;
     }
     h3 {
       margin-top: 10px;
+      font-size: 2em;
     }
 
     #main {
@@ -70,3 +90,38 @@
       box-shadow: none;
       outline: none;
     }
+    #map-control {
+      text-align: center;
+    }
+    #zoomOut {
+      font-weight: 300;
+      border: none;
+      background-color: transparent;
+      font-family: 'Amatic SC', cursive;
+      color: #fff;
+    }
+    #zoomOut:focus {
+      outline: none;
+    }
+    .gm-style {
+      background-color: #17263c;
+    }
+    @media only screen and (max-width: 40em) {
+       #header {
+            /*"https://i.pinimg.com/564x/58/48/91/584891a50c64d10d9809dc9c64e92927.jpg"*/
+            
+            /*https://i.pinimg.com/564x/86/ef/f2/86eff22912f56ff967393d608bdc6a16.jpg*/
+            /*https://i.pinimg.com/564x/09/ac/d4/09acd4dabd1d6f99c257f2dea28f71a5.jpg*/
+          background: url(../images/bkg.jpg) center center no-repeat;
+          background-size: cover;
+          height: 700px;
+          padding-top: 1%;
+     }
+     h1 {
+      font-size: 2em;
+    }
+    h3 {
+      margin-top: 10px;
+      font-size: 1em;
+    }
+   }

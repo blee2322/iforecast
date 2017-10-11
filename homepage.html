@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>i4Cast</title>
+  <title>iForecast</title>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
   <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/flick/jquery-ui.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -14,15 +16,20 @@
 <body>
 <div class="content-container">
 <div id="header">
-  <h1>some catchy BS goes here.</h1>
+  <!-- <h1>some catchyweather &amp; hometown <del>BS</del> goes here.</h1> -->
   <img src="assets/images/icon.png">
   <h3>iForecast</h3>
+  <p>(click)</p>
   <img src="assets/images/arrow1.png" id="downArrow">
 </div>
   <div id="map">
   <!-- INPUT MAP HERE -->
   </div> 
-  <button id="zoomOut">zoom Out</button>
+  <div class="row" id="map-control">
+    <div class="col-md-12">
+      <button id="zoomOut">Reset Map View</button>
+    </div>
+  </div>
   <div id="main">
     <div class="row">
       <div class="col-md-10">
@@ -31,7 +38,7 @@
       <div class="col-md-2">
         <div class="content-container">
           <div class="viewers-container">
-          <img src="assets/images/viewing.png">
+          <img src="assets/images/viewing1.png">
             <span id="connected-viewers"></span>
           </div>
         </div>
@@ -60,6 +67,7 @@
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 <script async defer 
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAkNHDnrQY-JqtW1a2kK9ngWrGh3HPjYU"></script>
+<script type="text/javascript" src="assets/javascript/map.js"></script>
 <script src="assets/javascript/app.js"></script>
 
 </body>

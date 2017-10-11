@@ -94,272 +94,22 @@ function formatHometownsGoogleMaps(locationObjs){
 
 // button that creates an event that zooms out automatically
 function renderMap(gmapsHometowns, zoomOut){
+
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: (usersHometown.latitude)? (zoomOut ? zoomOut :11) : 3,
-    styles: [
-      {
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#242f3e"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#746855"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#242f3e"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.land_parcel",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.locality",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#d59563"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.neighborhood",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "labels.text",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#d59563"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.business",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#263c3f"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#6b9a76"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#38414e"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#212a37"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "labels.icon",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9ca5b3"
-          }
-        ]
-      },
-      {
-        "featureType": "road.arterial",
-        "elementType": "labels",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#746855"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          {
-            "color": "#1f2835"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "labels",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#f3d19c"
-          }
-        ]
-      },
-      {
-        "featureType": "road.local",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "transit",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#2f3948"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.station",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#d59563"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#17263c"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#515c6d"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#17263c"
-          }
-        ]
-      }
-    ],
+    styles: mapStyles,
     center: new google.maps.LatLng(gmapsHometowns[gmapsHometowns.length - 1][1], gmapsHometowns[gmapsHometowns.length - 1][2]),
     //center: new google.maps.LatLng(usersHometown.latitude, usersHometown.longitude),
     disableDefaultUI: true,
-    zoomControl:true,
+    gestureHandling: 'greedy',
+    // zoomControl:true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
   console.log(gmapsHometowns);
   console.log(gmapsHometowns[0][1], gmapsHometowns[0][2]);
-  var infowindow = new google.maps.InfoWindow({});
+  var infowindow = new google.maps.InfoWindow({
+
+  });
 
   var marker, i;
 
@@ -367,7 +117,8 @@ function renderMap(gmapsHometowns, zoomOut){
     
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(gmapsHometowns[i][1], gmapsHometowns[i][2]),
-      map: map
+      map: map,
+      icon: "assets/images/marker3.png"
     });
 
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -390,12 +141,39 @@ function renderMap(gmapsHometowns, zoomOut){
           // console.log(data);
           var localTime = data.location.localtime;
           var weatherCondition = data.current.condition.text;
+          var weatherIcon;
+
           var currentTemp = data.current.temp_f;
           var currentWind = data.current.wind_mph;
-
+          var localTime = data.location.localtime;
+          var weatherCondition = data.current.condition.text;
+          var currentTemp = data.current.temp_f;
+          var currentWind = data.current.wind_mph;
+          var weatherIcon;
+          var nf = Intl.NumberFormat();
+          nf.format(gmapsHometowns[i][3])
+          if (weatherCondition === "Mist") {
+      
+            weatherIcon = " <img id='images' src='http://via.placeholder.com/150x150'>"
+          }
+          else {
+            weatherIcon = " <img src='http://via.placeholder.com/50x50'>"
+          }
           var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
 
-          infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3] + 'Forecast: ' + weatherData);
+
+          var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
+          infowindow.setContent('<div id="iw-container">' +
+                    '<p class="iw-icon">' + weatherIcon + '</p>' +
+                    '<p class="iw-location">' + gmapsHometowns[i][0] + '</p>' +
+                    '<p class="iw-time">' + localTime + '</p>' +
+                    '<p class="iw-weatherCondition">'+ weatherCondition +' </p>' +
+                    '<p class="iw-currentTemp">' + 'temp: ' + currentTemp + '&#8457' + '</p>' +
+                    '<p class="iw-currentWind">' + 'wind: '+ currentWind + '</p>' +
+                    '<p class="iw-population">' + 'population: ' + nf.format(gmapsHometowns[i][3]) + '</p>' +
+                  '</div>');
+         // infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3] + 'Forecast: ' + weatherData );
+          // + " imag src" +  weatherIcon
           infowindow.open(map, marker);
 
         })
@@ -488,7 +266,7 @@ function getWeather(coordinates) {
     // console.log(data);
   
     var localTime = data.location.localtime;
-    var weatherCondition = data.current.condition.text;
+    var weatherCondition = data.current.condition.text; // sunny , clear, rainy
     var currentTemp = data.current.temp_f;
     var currentWind = data.current.wind_mph;
 
