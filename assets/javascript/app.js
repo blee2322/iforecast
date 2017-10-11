@@ -154,13 +154,31 @@ function renderMap(gmapsHometowns, zoomOut){
           var weatherIcon;
           var nf = Intl.NumberFormat();
           nf.format(gmapsHometowns[i][3])
-          if (weatherCondition === "Mist") {
+          if(weatherCondition === "Sunny"){
+            weatherIcon = "<img class='images' src='assets/images/sun.png'>"
+          }
+          else if (weatherCondition === "Partly cloudy"){
+            weatherIcon = "<img class='images' src='assets/images/sun-cloud.png'>"
+          }
+          else if(weatherCondition === "Cloudy" || weatherCondition === "Overcast"){
+            weatherIcon = "<img class='images' src='assets/images/cloud.png'>"
+          }
+          else if(weatherCondition === "Fog"){
+            weatherIcon = "<img class='images' src='assets/images/fog.png'>"
+          }
+          else if (weatherCondition === "Mist" || weatherCondition === "Patchy rain possible" || weatherCondition === "Patchy light rain" || weatherCondition === "Light rain" || weatherCondition === "Light rain shower" || weatherCondition === "Light rain shower" || weatherCondition === "Patchy light drizzle" || weatherCondition === "Light drizzle") {
       
-            weatherIcon = "<img src='http://via.placeholder.com/50x50'>"
+            weatherIcon = "<img class='images' src='assets/images/rain.png'>"
             
           }
-          else {
-            weatherIcon = "<img id='images' src='assets/images/fog.png'>"
+          else if(weatherCondition === "Heavy rain at times" || weatherCondition === "Heavy rain" || weatherCondition === "Moderate or heavy rain shower" || weatherCondition === "Torrential rain shower" || weatherCondition === "Moderate rain at times" || weatherCondition === "Moderate rain") {
+            weatherIcon = "<img class='images' src='assets/images/storm1.png'>"
+          }
+          else if(weatherCondition === "Patchy light rain with thunder" || weatherCondition === "Moderate or heavy rain with thunder") {
+            weatherIcon = "<img class='images' src='assets/images/storm2.png'>"
+          }
+          else if(weatherCondition === "Thundery outbreaks possible") {
+            weatherIcon = "<img class='images' src='assets/images/storm.png'>"
           }
           //var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
 

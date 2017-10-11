@@ -129,7 +129,7 @@ font-family: 'Amatic SC', cursive; -
         margin: 0 auto;
         text-align: center;
       }
-      #images {
+      .images {
         width: 100%;
       }
       .iw-time {
