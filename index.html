@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>iForecast</title>
-  <meta name="google-signin-client_id" 
-    content="940595726063-uqsr63elb6udmhaqutsibhfm959tec4k.apps.googleusercontent.com">
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
+  <!-- xxs -->
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Dorsa|Open+Sans+Condensed:300|Wire+One" rel="stylesheet">
   <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/flick/jquery-ui.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -60,10 +57,8 @@
     </div>
   </div>
   <div id="stats-container">
-    <div id="chart" class="chart-container"></div>
-    <style>
-    </style>
-</div>
+    <!-- <div id="chart" class="chart-container"></div> -->
+  </div>
   </div>
 </div>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -80,218 +75,11 @@
 <script src="assets/javascript/app.js"></script>
 <script src="assets/javascript/infoBuble.js"></script>
  <!-- <script src="https://d3js.org/d3.v4.min.js" data-semver="4.0.0" data-require="d3@*"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
-<script src="https://apis.google.com/js/client:platform.js"></script>
+<script src="https://apis.google.com/js/client:platform.js"></script> -->
 <script> 
-/*  Example of what dataset structure should look like:
-var browserDataset = [
-        { name: 'IE', percent: 39.10 },
-        { name: 'Chrome', percent: 32.51 },
-        { name: 'Safari', percent: 13.68 },
-        { name: 'Firefox', percent: 8.71 },
-        { name: 'Others', percent: 6.01 }
-    ];  
-*/
 
-var browserDataset = [
-        { name: 'IE', percent: 39.10 },
-        { name: 'Chrome', percent: 32.51 },
-        { name: 'Safari', percent: 13.68 },
-        { name: 'Firefox', percent: 8.71 },
-        { name: 'Others', percent: 6.01 }
-    ];
-
-   // Replace with your client ID from the developer console.
-  var CLIENT_ID = '940595726063-uqsr63elb6udmhaqutsibhfm959tec4k.apps.googleusercontent.com';
-
-  // Set authorized scope.
-  var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
-
-
-  var VIEW_ID = '161886915';
-
-function renderGraph(dataset){
-  var pie=d3.layout.pie()
-            .value(function(d){return d.percent})
-            .sort(null)
-            .padAngle(.03);
-
-    var w=300,h=300;
-
-    var outerRadius=w/2;
-    var innerRadius=100;
-
-    var color = d3.scale.category10();
-
-    var arc=d3.svg.arc()
-            .outerRadius(outerRadius)
-            .innerRadius(innerRadius);
-
-    var svg=d3.select("#chart")
-            .append("svg")
-            .attr({
-                width:w,
-                height:h,
-                class:'shadow'
-            }).append('g')
-            .attr({
-                transform:'translate('+w/2+','+h/2+')'
-            });
-    var path=svg.selectAll('path')
-            .data(pie(dataset))
-            .enter()
-            .append('path')
-            .attr({
-                d:arc,
-                fill:function(d,i){
-                    return color(d.data.name);
-                }
-            });
-
-    path.transition()
-            .duration(1000)
-            .attrTween('d', function(d) {
-                var interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
-                return function(t) {
-                    return arc(interpolate(t));
-                };
-            });
-
-
-    var restOfTheData=function(){
-        var text=svg.selectAll('text')
-                .data(pie(dataset))
-                .enter()
-                .append("text")
-                .transition()
-                .duration(200)
-                .attr("transform", function (d) {
-                    return "translate(" + arc.centroid(d) + ")";
-                })
-                .attr("dy", ".4em")
-                .attr("text-anchor", "middle")
-                .text(function(d){
-                    return d.data.percent+"%";
-                })
-                .style({
-                    fill:'#fff',
-                    'font-size':'10px'
-                });
-
-        var legendRectSize=20;
-        var legendSpacing=7;
-        var legendHeight=legendRectSize+legendSpacing;
-
-
-        var legend=svg.selectAll('.legend')
-                .data(color.domain())
-                .enter()
-                .append('g')
-                .attr({
-                    class:'legend',
-                    transform:function(d,i){
-                        //Just a calculation for x & y position
-                        return 'translate(-35,' + ((i*legendHeight)-65) + ')';
-                    }
-                });
-        legend.append('rect')
-                .attr({
-                    width:legendRectSize,
-                    height:legendRectSize,
-                    rx:20,
-                    ry:20
-                })
-                .style({
-                    fill:color,
-                    stroke:color
-                });
-
-        legend.append('text')
-                .attr({
-                    x:30,
-                    y:15
-                })
-                .text(function(d){
-                    return d;
-                }).style({
-                    fill:'#929DAF',
-                    'font-size':'14px'
-                });
-    };
-
-    setTimeout(restOfTheData,1000);
-}
-renderGraph(browserDataset);
-
-// Query the API and print the results to the page.
-  function queryReports() {
-    gapi.client.request({
-      path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
-      method: 'POST',
-      body: {
-        key: 'AIzaSyAa2Klj4goG8mX8Z6xZTYt1yT01p9xtJaA',
-        reportRequests: [
-          {
-            viewId: VIEW_ID,
-            dateRanges: [
-              {
-                startDate: '7daysAgo',
-                endDate: 'today'
-              }
-            ],
-            metrics: [
-              {
-                expression: 'ga:sessions'
-              }
-            ]
-          }
-        ]
-      }
-    }).then(displayResults, console.error.bind(console));
-  }
-
-  function displayResults(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    console.log(formattedJson);
-    // format data into data structure similar to browserDAta here
-    // clear the graph if it already exists
-    // once formatted, pass into renderGraph here to re-render
-  }
-
-  function authorize(event) {
-    // Handles the authorization flow.
-    // `immediate` should be false when invoked from the button click.
-    var useImmdiate = event ? false : true;
-    var authData = {
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      immediate: useImmdiate
-    };
-
-    gapi.auth.authorize(authData, function(response) {
-      var authButton = document.getElementById('auth-button');
-      if (response.error) {
-        authButton.hidden = false;
-      }
-      else {
-        authButton.hidden = true;
-        queryReports();
-      }
-    });
-  }
-
-$(document).ready(function(){
-
-})
-/*
-on click: 
-- grab the respective dataset from google analytics (e.g. grab gender distribution, or hobby distribution)
-- convert that data into the format similar to browserDataset, where each object has a name and percent property
-- empty the #chart element, in case there's a graph that is already rendered.
-- call renderGraph and pass that dataset into it to render the graph.
-*/
 </script>
 
 </body>
