@@ -133,7 +133,7 @@ function renderMap(gmapsHometowns, zoomOut){
     
         var queryPeram = weatherCoordinates;
         var apiKey = "5be11e7282a5413f9ae194901170510";
-        var baseURL =  "https://api.apixu.com/v1/current.json?";
+        var baseURL =  "http://api.apixu.com/v1/current.json?";
         var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
         // console.log(queryURL);
         $.ajax({
@@ -248,7 +248,7 @@ $(function (){
    $("#hometown").autocomplete({
     source: function (request, response) {
      $.getJSON(
-      "https://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
+      "http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
       function (data) {
         response(data)
       }
@@ -309,7 +309,7 @@ function getCityDetails(fqcn) {
   if (cityfqcn) {
     
      return $.getJSON(
-        "https://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
+        "http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
            
       );
   }
@@ -319,7 +319,7 @@ function getWeather(coordinates) {
   console.log(coordinates);
   var queryPeram = coordinates;
   var apiKey = "5be11e7282a5413f9ae194901170510";
-  var baseURL =  "https://api.apixu.com/v1/current.json?";
+  var baseURL =  "http://api.apixu.com/v1/current.json?";
   var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
    console.log(queryURL);
   $.ajax({
