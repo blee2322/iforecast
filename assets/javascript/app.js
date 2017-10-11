@@ -91,7 +91,7 @@ function formatHometownsGoogleMaps(locationObjs){
   })
   return locations;
 }
-
+var map, infoBubble;
 // button that creates an event that zooms out automatically
 function renderMap(gmapsHometowns, zoomOut){
 
@@ -119,8 +119,10 @@ function renderMap(gmapsHometowns, zoomOut){
       position: new google.maps.LatLng(gmapsHometowns[i][1], gmapsHometowns[i][2]),
       map: map,
       icon: "assets/images/marker3.png"
+    }); 
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+          $('#iw-container').prev('div').remove();
     });
-
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
         map.setZoom(11);
@@ -154,34 +156,68 @@ function renderMap(gmapsHometowns, zoomOut){
           nf.format(gmapsHometowns[i][3])
           if (weatherCondition === "Mist") {
       
-            weatherIcon = " <img id='images' src='http://via.placeholder.com/150x150'>"
+            weatherIcon = "<img src='http://via.placeholder.com/50x50'>"
+            
           }
           else {
-            weatherIcon = " <img src='http://via.placeholder.com/50x50'>"
+            weatherIcon = "<img id='images' src='assets/images/fog.png'>"
           }
-          var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
+          //var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
 
-
-          var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
-          infowindow.setContent('<div id="iw-container">' +
-                    '<p class="iw-icon">' + weatherIcon + '</p>' +
-                    '<p class="iw-location">' + gmapsHometowns[i][0] + '</p>' +
+       
+         // infowindow.setContent
+          var contentString = '<div id="content" class="iw-container">' +
+                    '<div class="iw-icon">' + weatherIcon + '</div>' +
+                    '<div class="time-wrap">'+
                     '<p class="iw-time">' + localTime + '</p>' +
-                    '<p class="iw-weatherCondition">'+ weatherCondition +' </p>' +
-                    '<p class="iw-currentTemp">' + 'temp: ' + currentTemp + '&#8457' + '</p>' +
-                    '<p class="iw-currentWind">' + 'wind: '+ currentWind + '</p>' +
+                    '<div>'+
+                    '<div class="temp-wind">' +
+                    '<div class="wind-wrap">'+
+                    '<img src="assets/images/wind4.png">' +
+                    '<p class="iw-currentWind">'+ currentWind + '</p>'
+                    + '</div>' +
+                    '<div class="temp-wrap">' +
+                    '<p class="iw-currentTemp">' + currentTemp + '°' + '</p>'
+                    + '</div>' 
+                    + '</div>'
+                    +'<div class="place-wrap">' +
+                    '<p class="iw-location">' + gmapsHometowns[i][0] + '</p>' +
                     '<p class="iw-population">' + 'population: ' + nf.format(gmapsHometowns[i][3]) + '</p>' +
-                  '</div>');
+                    '</div>' +
+                  '</div>'; //'<p class="iw-weatherCondition">'+ weatherCondition +' </p>' +
          // infowindow.setContent(gmapsHometowns[i][0] + ' population: ' + gmapsHometowns[i][3] + 'Forecast: ' + weatherData );
           // + " imag src" +  weatherIcon
-          infowindow.open(map, marker);
+          // infowindow.open(map, marker);
+
+          infoBubble = new InfoBubble({
+            map: map,
+            maxWidth: 200,
+            minWidth: 200,
+            content: contentString,
+            position: new google.maps.LatLng(-35, 151),
+            shadowStyle: 1,
+            padding: 0,
+            backgroundColor: 'rgba(0,0,0,.7)',
+            borderRadius: 4,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: '#2c2c2c',
+            disableAutoPan: true,
+            hideCloseButton: false,
+            arrowPosition: 30,
+            backgroundClassName: 'iw-container',
+            arrowStyle: 4
+          });
+
+          if (!infoBubble.isOpen()) {
+            infoBubble.open(map, marker);
+          }
 
         })
       }
     })(marker, i));
   }
 }
-
 $(function (){
    $("#hometown").autocomplete({
     source: function (request, response) {

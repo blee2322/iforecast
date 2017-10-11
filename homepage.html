@@ -16,9 +16,10 @@
 <body>
 <div class="content-container">
 <div id="header">
-  <!-- <h1>some catchyweather &amp; hometown <del>BS</del> goes here.</h1> -->
+ <!--  <h1>some catchyweather &amp; hometown <del>BS</del> goes here.</h1> -->
   <img src="assets/images/icon.png">
   <h3>iForecast</h3>
+  <h1>Hometown weather m<span><sup>app</sup></span></h1>
   <p>(click)</p>
   <img src="assets/images/arrow1.png" id="downArrow">
 </div>
@@ -47,6 +48,7 @@
     <div class="row">
       <div class="col-md-12">
         <form id="hometown-form" class="hide" method="post" enctype="multipart/form-data" onsubmit="return false;"> 
+          <h3>input your hometown and select the match from the drop down</h3>
           <div class="form-group">
             <input name="ff_nm_from[]" type="text" class="form-control ff_elem" id="hometown" placeholder="hometown (city, state, country)" required value="">
             </div>
@@ -69,6 +71,6 @@
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAkNHDnrQY-JqtW1a2kK9ngWrGh3HPjYU"></script>
 <script type="text/javascript" src="assets/javascript/map.js"></script>
 <script src="assets/javascript/app.js"></script>
-
+<script src="assets/javascript/infoBuble.js"></script>
 </body>
 </html>
