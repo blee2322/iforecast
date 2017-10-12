@@ -11,6 +11,22 @@ This project was created to enable visitors log their birthplace and know its we
 
 These instructions will get you a copy of the project up and running on your local machine for grading and testing purposes.
 
+### Coding style
+
+
+```
+// array of all key value from objects 
+function formatHometownsGoogleMaps(locationObjs){ 
+  //["san francisco, USA"]
+  var locations = [];
+  Object.keys(locationObjs).forEach(function(key){
+    var hometown = locationObjs[key]
+    var formattedHometown = [hometown.place, hometown.latitude, hometown.longitude, hometown.population];
+    locations.push(formattedHometown);
+  })
+  return locations;
+}
+```
 ### Installing
 
 Clone to a local repository. Enjoy!
