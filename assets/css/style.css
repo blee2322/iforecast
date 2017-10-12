@@ -180,9 +180,9 @@ font-family: 'Amatic SC', cursive; -
             
             /*https://i.pinimg.com/564x/86/ef/f2/86eff22912f56ff967393d608bdc6a16.jpg*/
             /*https://i.pinimg.com/564x/09/ac/d4/09acd4dabd1d6f99c257f2dea28f71a5.jpg*/
-          background: url(../images/bkg.jpg) center center no-repeat;
+          background: url(../images/bkg1.jpg) center top no-repeat;
           background-size: cover;
-          height: 700px;
+          height: 875px;
           padding-top: 1%;
      }
      h1 {
