@@ -11,22 +11,6 @@ This project was created to enable visitors log their birthplace and know its we
 
 These instructions will get you a copy of the project up and running on your local machine for grading and testing purposes.
 
-### Coding style
-
-
-```
-// array of all key value from objects 
-function formatHometownsGoogleMaps(locationObjs){ 
-  //["san francisco, USA"]
-  var locations = [];
-  Object.keys(locationObjs).forEach(function(key){
-    var hometown = locationObjs[key]
-    var formattedHometown = [hometown.place, hometown.latitude, hometown.longitude, hometown.population];
-    locations.push(formattedHometown);
-  })
-  return locations;
-}
-```
 ### Installing
 
 Clone to a local repository. Enjoy!
@@ -47,6 +31,70 @@ Open your cloned repositoy in a text editor to review the HTML, CSS, Google Maps
 * [JS Info Bubble](https://github.com/googlemaps/js-info-bubble) - Google Maps infoWindow framework used.
 * [Firebase](https://firebase.google.com/docs/) - database used.
 
+### Additions
+
+data formating snippet
+```
+// array of all key value from objects 
+function formatHometownsGoogleMaps(locationObjs){ 
+  //["san francisco, USA"]
+  var locations = [];
+  Object.keys(locationObjs).forEach(function(key){
+    var hometown = locationObjs[key]
+    var formattedHometown = [hometown.place, hometown.latitude, hometown.longitude, hometown.population];
+    locations.push(formattedHometown);
+  })
+  return locations;
+}
+```
+APIXU (weather) API snippet
+```
+function getWeather(coordinates) {
+  console.log(coordinates);
+  var queryPeram = coordinates;
+  var apiKey = "";
+  var baseURL =  "http://api.apixu.com/v1/current.json?";
+  var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
+   console.log(queryURL);
+  $.ajax({
+   url: queryURL,
+   method: "GET"
+  }).done(function (data) {
+    // console.log(data);
+  
+    var localTime = data.location.localtime;
+    var weatherCondition = data.current.condition.text; // sunny , clear, rainy
+    var currentTemp = data.current.temp_f;
+    var currentWind = data.current.wind_mph;
+
+    var weatherData = localTime + " " + weatherCondition + " " + currentTemp + " " + currentWind;
+    return weatherData
+  })
+  return 
+};
+```
+Google Maps API snippet
+```
+unction renderMap(gmapsHometowns, zoomOut){
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: (usersHometown.latitude)? (zoomOut ? zoomOut :11) : 3,
+    styles: mapStyles,
+    center: new google.maps.LatLng(gmapsHometowns[gmapsHometowns.length - 1][1], gmapsHometowns[gmapsHometowns.length - 1][2]),
+    //center: new google.maps.LatLng(usersHometown.latitude, usersHometown.longitude),
+    disableDefaultUI: true,
+    gestureHandling: 'greedy',
+    // zoomControl:true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  console.log(gmapsHometowns);
+  console.log(gmapsHometowns[0][1], gmapsHometowns[0][2]);
+  var infowindow = new google.maps.InfoWindow({
+
+  });
+
+  var marker, i;
+```
 
 ## Authors
 
