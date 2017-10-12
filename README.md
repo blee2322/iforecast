@@ -39,4 +39,4 @@ participant of this project.
 * **James Reantillo** - *Initial work: map feature* 
 * **Fawaz Ahmed** - *Initial work: weather feature* 
 * **Brandon Geeman Lee** - *Initial work: map feature* 
-* **Amber Burroughs** - *Initial work: frontend of website + Google analytics* 
+* **Amber Burroughs** - *Initial work: frontend of website + Google analytics* -  *Final work: Brought application together, got everything working together*
