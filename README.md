@@ -27,11 +27,12 @@ Open your cloned repositoy in a text editor to review the HTLM, CSS and JS.
 * [JS Info Bubble](https://github.com/googlemaps/js-info-bubble) - Google Maps infoWindow framework used.
 * [Firebase](https://firebase.google.com/docs/) - database used.
 
+
 ## Authors
 
 participant of this project.
 
-* **James Reantillo** - *Initial work* 
-* **Fawaz Ahmed** - *Initial work* 
+* **James Reantillo** - *Initial work: map feature* 
+* **Fawaz Ahmed** - *Initial work: weather feature* 
 * **Brandon Geeman Lee** - *Initial work* 
 * **Amber Burroughs** - *Initial work* 
