@@ -8,8 +8,6 @@ Display a map with pins of any user’s location that has visited the website. w
 This project was created to enable visitors log their birthplace and know its weather and other basic location data. Birthplaces of previous visitors would be logged on maps and data of the vistors birthplace is available upon click.
 <img src="https://d26dzxoao6i3hh.cloudfront.net/items/0d3k1C3A133a0o053s3c/Screen%20Recording%202017-10-12%20at%2003.28%20PM.gif?v=627d7623?raw=true" >
 
-<img src="assets/images/graph.jpg?raw=true" >
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for grading and testing purposes.
