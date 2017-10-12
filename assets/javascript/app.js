@@ -133,7 +133,7 @@ function renderMap(gmapsHometowns, zoomOut){
     
         var queryPeram = weatherCoordinates;
         var apiKey = "5be11e7282a5413f9ae194901170510";
-        var baseURL =  "http://api.apixu.com/v1/current.json?";
+        var baseURL =  "https://api.apixu.com/v1/current.json?";
         var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
         // console.log(queryURL);
         $.ajax({
@@ -309,8 +309,7 @@ function getCityDetails(fqcn) {
   if (cityfqcn) {
     
      return $.getJSON(
-        "http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn
-           
+        "https://secure.geobytes.com/GetCityDetails?key=196ab1ff41303d2bf39b84d121658e4c&callback=?&fqcn="+cityfqcn   
       );
   }
 }
@@ -319,7 +318,7 @@ function getWeather(coordinates) {
   console.log(coordinates);
   var queryPeram = coordinates;
   var apiKey = "5be11e7282a5413f9ae194901170510";
-  var baseURL =  "http://api.apixu.com/v1/current.json?";
+  var baseURL =  "https://api.apixu.com/v1/current.json?";
   var queryURL = baseURL + "key=" + apiKey + "&q=" + queryPeram;
    console.log(queryURL);
   $.ajax({
@@ -364,12 +363,3 @@ function getWeather(coordinates) {
     });
 
 });
-
-
-
-
-
-
-
-
-
