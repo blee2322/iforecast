@@ -23,7 +23,8 @@
 
      #map {
       height: 70%;
-      width: 100%;
+      margin: 0 auto;
+      width: 95%;
     }
       /* Optional: Makes the sample page fill the window. */
     html, body {
