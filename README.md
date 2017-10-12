@@ -5,7 +5,7 @@ Display a map with pins of any user’s location that has visited the website. w
 
 ## Motivation
 
-This project was created to enable visitors log their birthplace and know its weather. Birthplaces of previous visitors would be logged on maps and their data would be displayed by virtue of google analytics.
+This project was created to enable visitors log their birthplace and know its weather and other basic location data. Birthplaces of previous visitors would be logged on maps and data of the vistors birthplace is available upon click.
 
 ## Getting Started
 
