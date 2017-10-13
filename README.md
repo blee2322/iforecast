@@ -95,6 +95,7 @@ unction renderMap(gmapsHometowns, zoomOut){
   });
 
   var marker, i;
+  ....
 ```
 
 ## Authors
